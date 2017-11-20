@@ -1,0 +1,13 @@
+syntax: glob
+
+*.pyc
+*.pyo
+.coverage
+.tox/
+__pycache__/
+tests/__pycache__/
+build/
+dist/
+.eggs/
+eyeo_depup.egg-info/
+htmlcov/
