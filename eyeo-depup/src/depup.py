@@ -68,8 +68,6 @@ class DepUpdate(object):
         """
         self._cwd = os.getcwd()
 
-        self.root_repo = Vcs.factory(self._cwd)
-
         self._base_revision = None
         self._parsed_changes = None
         self.arguments = None
@@ -84,6 +82,7 @@ class DepUpdate(object):
         self._make_arguments(default_template, *args)
 
         # Check if root repository is dirty
+        self.root_repo = Vcs.factory(self._cwd)
         if not self.root_repo.repo_is_clean():
             logger.error('Your repository is dirty')
             exit(1)
