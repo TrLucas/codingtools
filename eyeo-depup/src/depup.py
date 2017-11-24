@@ -47,8 +47,13 @@ logger = logging.getLogger('eyeo-depup')
 class DepUpdate(object):
     """The main class used to process dependency updates.
 
-    TODO: CLARIFY ME!
+    DepUpdate provides an argument parser and subcommand routing for the
+    commands 'diff', 'issue', 'changes' and 'commit'. Each command may require
+    it's own set of parameters and parse them accordingly.
 
+    When parsing is successufl and all required parameters are provided,
+    DepUpdate will execute the corresponding command and will either print the
+    output to STDOUT or to the given filename.
     """
 
     VCS_EXECUTABLE = ('hg', '--config', 'defaults.log=', '--config',
