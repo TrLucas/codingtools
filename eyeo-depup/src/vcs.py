@@ -69,7 +69,12 @@ class Vcs(object):
     @classmethod
     def is_vcs_for_repo(cls, path):
         """Assert if cls is a suitable VCS for the given (repository-) path."""
-        return os.path.exists(os.path.join(path, cls.VCS_REQUIREMENT))
+        try:
+            subprocess.check_output([cls.EXECUTABLE, 'status'], cwd=path,
+                                    stderr=subprocess.STDOUT)
+            return True
+        except subprocess.CalledProcessError:
+            return False
 
     def run_cmd(self, *args, **kwargs):
         """Run the vcs with the given commands."""
@@ -190,7 +195,6 @@ class Mercurial(Vcs):
     """Mercurial specialization of VCS."""
 
     EXECUTABLE = 'hg'
-    VCS_REQUIREMENT = '.hg'
     BASE_CMD = (EXECUTABLE, '--config', 'defaults.log=', '--config',
                 'defaults.pull=', '--config', 'defaults.diff=')
     UPDATE_LOCAL_HISTORY = 'pull'
@@ -259,7 +263,6 @@ class Git(Vcs):
     """Git specialization of Vcs."""
 
     EXECUTABLE = 'git'
-    VCS_REQUIREMENT = '.git'
     BASE_CMD = (EXECUTABLE,)
     UPDATE_LOCAL_HISTORY = 'fetch'
     LOG_TEMLATE = '{"hash":"%h","author":"%an","date":"%aD","message":"%s"}'
