@@ -188,7 +188,7 @@ class DepUpdate(object):
                 '-t', '--template', dest='tmpl_path',
                 default=default_template,
                 help=('The template to use. Defaults to the provided '
-                      'default.trac (Used only with -i/--issue).')
+                      'default.trac.')
         )
 
         # Add the command for printing a list of changes

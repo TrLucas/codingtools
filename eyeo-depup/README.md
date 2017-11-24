@@ -1,7 +1,5 @@
 # Easy dependency updating
 
-
-
 ## Introduction
 
 This program is meant to ease the process of gathering information /
@@ -188,9 +186,9 @@ Subcommands:
 ### diff
 
 ```
-usage: eyeo-depup diff [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR] [-f FILENAME] [-s]
-                  [-l] [-n UNIFIED_LINES]
-                  dependency
+usage: eyeo-depup diff [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR] [-f FILENAME]
+                       [-s] [-l] [-n UNIFIED_LINES]
+                       dependency
 
 Invoke the current repository's VCS to generate a diff, containing all changes
 made between two revisions.
@@ -226,9 +224,9 @@ optional arguments:
 ### changes
 
 ```
-usage: eyeo-depup changes [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR] [-f FILENAME]
-                     [-s] [-l]
-                     dependency
+usage: eyeo-depup changes [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR]
+                          [-f FILENAME] [-s] [-l]
+                          dependency
 
 Generate a list of commit hashes and commit messages between the dependency's
 current revision and a given new revision.
@@ -261,9 +259,9 @@ optional arguments:
 ### issue
 
 ```
-usage: eyeo-depup issue [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR] [-f FILENAME] [-s]
-                   [-l] [-t TMPL_PATH]
-                   dependency
+usage: eyeo-depup issue [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR] [-f FILENAME]
+                        [-s] [-l] [-t TMPL_PATH]
+                        dependency
 
 Render an issue subject and an issue body, according to the given template.
 
@@ -271,7 +269,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -t TMPL_PATH, --template TMPL_PATH
                         The template to use. Defaults to the provided
-                        default.trac (Used only with -i/--issue).
+                        default.trac.
 
   dependency            The dependency to be updated, as specified in the
                         dependencies file.
@@ -299,7 +297,7 @@ optional arguments:
 
 ```
 usage: eyeo-depup commit [-h] [-r NEW_REVISION] [-m LOCAL_MIRROR]
-                    dependency issue_number
+                         dependency issue_number
 
 Rewrite and commit a dependency file to the new revision. WARNING: This
 actually changes your repository's history, use with care!
